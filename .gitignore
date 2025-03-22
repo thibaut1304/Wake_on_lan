@@ -1,0 +1,4 @@
+**/env
+**/mqtt.ini
+**/__pycache__
+**/logs

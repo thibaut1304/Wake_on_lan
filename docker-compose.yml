@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  check-hostname_container:
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    image: check-hostname
+    environment:
+      - LOG_LEVEL=DEBUG             # DEBUG / INFO / WARNING / ERROR
+      - TZ=Europe/Paris             # Heure de paris pour les logs
+      - DISABLE_MQTT_DEBUG=False    # Desactiver l'envoie de logs sur server mqtt
+    volumes:
+      - ./app:/app
+    network_mode: "host"            # Important pour Wake-on-LAN
+    restart: unless-stopped
